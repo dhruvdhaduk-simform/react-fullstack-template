@@ -11,21 +11,25 @@ export function HomePage() {
     });
 
     return (
-        <div className="pt-14">
-            {greetingQuery.isLoading && <p className="text-center">Loading . . .</p>}
-            {greetingQuery.error && (
-                <p className="text-center text-red-500">Error: {greetingQuery.error.message}</p>
-            )}
-            {greetingQuery.data && (
-                <p className="text-center font-bold text-3xl">{greetingQuery.data.message}</p>
-            )}
+        <div className="flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-md w-full bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-xl backdrop-blur-lg p-6 space-y-6">
+                {greetingQuery.isLoading && <p className="text-center">Loading . . .</p>}
+                {greetingQuery.error && (
+                    <p className="text-center text-red-500">Error: {greetingQuery.error.message}</p>
+                )}
+                {greetingQuery.data && (
+                    <p className="text-center text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">
+                        {greetingQuery.data.message}
+                    </p>
+                )}
 
-            <div className="max-w-80 flex flex-col gap-4 p-4 mx-auto">
-                <Label>
-                    <span className="text-sm">Your Name</span>
-                    <Input value={name} onChange={(e) => setName(e.currentTarget.value)} />
-                </Label>
-                <Button onClick={() => greetingQuery.refetch()}>Submit</Button>
+                <div className="space-y-4 flex flex-col">
+                    <Label>
+                        <span className="text-sm/loose">Your Name</span>
+                        <Input value={name} onChange={(e) => setName(e.currentTarget.value)} />
+                    </Label>
+                    <Button onClick={() => greetingQuery.refetch()}>Submit</Button>
+                </div>
             </div>
         </div>
     );

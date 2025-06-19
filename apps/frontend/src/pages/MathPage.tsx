@@ -16,40 +16,51 @@ export function MathPage() {
     });
 
     return (
-        <div className="pt-10">
-            <p className="text-center font-bold text-3xl mb-10">Math page</p>
+        <div className="flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-md w-full bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-xl backdrop-blur-lg p-6 space-y-6">
+                <p className="text-center text-2xl font-bold text-indigo-600 dark:text-indigo-400">Math Page</p>
 
-            {squareQuery.isLoading && <p className="text-center">Calculating square of { num } . . .</p>}
-            {squareQuery.error && (
-                <p className="text-center text-red-500">Error: {squareQuery.error.message}</p>
-            )}
-            {squareQuery.data && (
-                <p className="text-center font-bold">{squareQuery.data.result}</p>
-            )}
+                {squareQuery.isLoading && (
+                    <p className="text-center italic">Calculating square of {num}...</p>
+                )}
+                {squareQuery.error && (
+                    <p className="text-center text-red-500">Error: {squareQuery.error.message}</p>
+                )}
+                {squareQuery.data && (
+                    <p className="text-center text-xl font-semibold text-green-600">Result: {squareQuery.data.result}</p>
+                )}
 
+                {sqrtQuery.isLoading && (
+                    <p className="text-center italic">Calculating √{num}...</p>
+                )}
+                {sqrtQuery.error && (
+                    <p className="text-center text-red-500">Error: {sqrtQuery.error.message}</p>
+                )}
+                {sqrtQuery.data && (
+                    <p className="text-center text-xl font-semibold text-green-600">Result: {sqrtQuery.data.result}</p>
+                )}
 
-            {sqrtQuery.isLoading && <p className="text-center">Calculating square root of { num } . . .</p>}
-            {sqrtQuery.error && (
-                <p className="text-center text-red-500">Error: {sqrtQuery.error.message}</p>
-            )}
-            {sqrtQuery.data && (
-                <p className="text-center font-bold">{sqrtQuery.data.result}</p>
-            )}
+                <div className="space-y-4">
+                    <Label className="block">
+                        <span className="text-sm">Enter a number:</span>
+                        <Input
+                            type="number"
+                            value={num}
+                            onChange={(e) => setNum(Number(e.currentTarget.value))}
+                            className="mt-1"
+                        />
+                    </Label>
 
-            <div className="max-w-80 flex flex-col gap-4 p-4 mx-auto">
-                <Label>
-                    <span className="text-sm">Enter a number :</span>
-                    <Input
-                        type="number"
-                        value={num}
-                        onChange={(e) => setNum(Number(e.currentTarget.value))}
-                    />
-                </Label>
-
-                <Button onClick={() => {
-                    squareQuery.refetch();
-                    sqrtQuery.refetch();
-                }}>Submit</Button>
+                    <Button
+                        className="w-full"
+                        onClick={() => {
+                            squareQuery.refetch();
+                            sqrtQuery.refetch();
+                        }}
+                    >
+                        Compute
+                    </Button>
+                </div>
             </div>
         </div>
     );
