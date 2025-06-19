@@ -9,7 +9,7 @@ const router = t.router;
 export const appRouter = router({
     greeting: publicProcedure.input(z.string().nullish()).query(({ input }) => {
         return {
-            text: `hello ${input ?? 'world'}`,
+            message: `hello ${input ?? 'world'}`,
         };
     }),
 

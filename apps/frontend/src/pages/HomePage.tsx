@@ -17,7 +17,7 @@ export function HomePage() {
                 <p className="text-center text-red-500">Error: {greetingQuery.error.message}</p>
             )}
             {greetingQuery.data && (
-                <p className="text-center font-bold text-3xl">{greetingQuery.data.text}</p>
+                <p className="text-center font-bold text-3xl">{greetingQuery.data.message}</p>
             )}
 
             <div className="max-w-80 flex flex-col gap-4 p-4 mx-auto">
