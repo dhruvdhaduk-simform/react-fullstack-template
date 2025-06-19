@@ -19,26 +19,40 @@ export function MathPage() {
     return (
         <div className="flex items-center justify-center min-h-[70vh]">
             <div className="max-w-md w-full bg-white dark:bg-white/5 rounded-xl shadow-lg backdrop-blur-sm p-6 space-y-6 border border-white/20">
-                <p className="text-center text-2xl font-bold text-black dark:text-white">Math Page</p>
+                <p className="text-center text-2xl font-bold text-black dark:text-white">
+                    Math Page
+                </p>
 
                 {squareQuery.isLoading && (
-                    <p className="text-center italic text-blue-600 dark:text-blue-400">Calculating square of {num}...</p>
+                    <p className="text-center italic text-blue-600 dark:text-blue-400">
+                        Calculating square of {num}...
+                    </p>
                 )}
                 {squareQuery.error && (
-                    <p className="text-center text-red-600 dark:text-red-400">Error: {squareQuery.error.message}</p>
+                    <p className="text-center text-red-600 dark:text-red-400">
+                        Error: {squareQuery.error.message}
+                    </p>
                 )}
                 {squareQuery.data && (
-                    <p className="text-center text-xl font-semibold text-green-600 dark:text-green-400">Result: {squareQuery.data.result}</p>
+                    <p className="text-center text-xl font-semibold text-green-600 dark:text-green-400">
+                        Result: {squareQuery.data.result}
+                    </p>
                 )}
 
                 {sqrtQuery.isLoading && (
-                    <p className="text-center italic text-blue-600 dark:text-blue-400">Calculating √{num}...</p>
+                    <p className="text-center italic text-blue-600 dark:text-blue-400">
+                        Calculating √{num}...
+                    </p>
                 )}
                 {sqrtQuery.error && (
-                    <p className="text-center text-red-600 dark:text-red-400">Error: {sqrtQuery.error.message}</p>
+                    <p className="text-center text-red-600 dark:text-red-400">
+                        Error: {sqrtQuery.error.message}
+                    </p>
                 )}
                 {sqrtQuery.data && (
-                    <p className="text-center text-xl font-semibold text-green-600 dark:text-green-400">Result: {sqrtQuery.data.result}</p>
+                    <p className="text-center text-xl font-semibold text-green-600 dark:text-green-400">
+                        Result: {sqrtQuery.data.result}
+                    </p>
                 )}
 
                 <div className="space-y-4">
