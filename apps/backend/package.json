@@ -1,0 +1,21 @@
+{
+    "name": "backend",
+    "private": true,
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsx watch src/server.ts",
+        "lint": "eslint --cache src/index.ts",
+        "start": "node dist/src/server.js"
+    },
+    "dependencies": {
+        "@trpc/server": "npm:@trpc/server",
+        "cors": "^2.8.5",
+        "zod": "^3.25.51"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.13",
+        "@types/node": "^22.13.5",
+        "eslint": "^9.26.0",
+        "tsx": "^4.19.3"
+    }
+}
