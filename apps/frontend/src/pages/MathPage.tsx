@@ -5,13 +5,14 @@ import { Label } from '@radix-ui/react-label';
 import { useState } from 'react';
 
 export function MathPage() {
-    const [num, setNum] = useState(0);
+    const [num, setNum] = useState<string>('');
+    const parsedNum = Number(num);
 
-    const squareQuery = trpc.math.square.useQuery(num, {
+    const squareQuery = trpc.math.square.useQuery(parsedNum, {
         enabled: false,
     });
 
-    const sqrtQuery = trpc.math.sqrt.useQuery(num, {
+    const sqrtQuery = trpc.math.sqrt.useQuery(parsedNum, {
         enabled: false,
     });
 
@@ -46,14 +47,17 @@ export function MathPage() {
                         <Input
                             type="number"
                             value={num}
-                            onChange={(e) => setNum(Number(e.currentTarget.value))}
+                            placeholder=""
+                            onChange={(e) => setNum(e.currentTarget.value)}
                             className="mt-1"
                         />
                     </Label>
 
                     <Button
                         className="w-full bg-black text-white hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/80"
+                        disabled={!num}
                         onClick={() => {
+                            if (!num) return;
                             squareQuery.refetch();
                             sqrtQuery.refetch();
                         }}
