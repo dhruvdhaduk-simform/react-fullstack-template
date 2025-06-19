@@ -1,21 +1,33 @@
-import { Link, Outlet } from 'react-router';
+import { Outlet, NavLink } from 'react-router';
 
 function App() {
     return (
         <div>
             <div className="flex justify-center items-center gap-4 p-4">
-                <Link className="hover:underline" to="/">
+                <NavLink
+                    className={({ isActive }) => `hover:underline ${isActive && 'text-red-500'}`}
+                    to="/"
+                >
                     Home Page
-                </Link>
-                <Link className="hover:underline" to="/math">
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) => `hover:underline ${isActive && 'text-red-500'}`}
+                    to="/math"
+                >
                     Math Page
-                </Link>
-                <Link className="hover:underline" to="/about">
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) => `hover:underline ${isActive && 'text-red-500'}`}
+                    to="/about"
+                >
                     About Page
-                </Link>
-                <Link className="hover:underline" to="/aslfdasdjsfkl">
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) => `hover:underline ${isActive && 'text-red-500'}`}
+                    to="/aslfdasdjsfkl"
+                >
                     Any Random Page
-                </Link>
+                </NavLink>
             </div>
             <hr />
             <div className="p-4">
