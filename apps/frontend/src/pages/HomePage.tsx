@@ -12,13 +12,13 @@ export function HomePage() {
 
     return (
         <div className="flex items-center justify-center min-h-[70vh]">
-            <div className="max-w-md w-full bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-xl backdrop-blur-lg p-6 space-y-6">
+            <div className="max-w-md w-full bg-white dark:bg-white/5 rounded-xl shadow-lg backdrop-blur-sm p-6 space-y-6 border border-white/20">
                 {greetingQuery.isLoading && <p className="text-center">Loading . . .</p>}
                 {greetingQuery.error && (
-                    <p className="text-center text-red-500">Error: {greetingQuery.error.message}</p>
+                    <p className="text-center text-red-600 dark:text-red-400">Error: {greetingQuery.error.message}</p>
                 )}
                 {greetingQuery.data && (
-                    <p className="text-center text-3xl font-extrabold text-indigo-600 dark:text-indigo-400">
+                    <p className="text-center text-3xl font-bold text-blue-600 dark:text-blue-400">
                         {greetingQuery.data.message}
                     </p>
                 )}
@@ -28,7 +28,9 @@ export function HomePage() {
                         <span className="text-sm/loose">Your Name</span>
                         <Input value={name} onChange={(e) => setName(e.currentTarget.value)} />
                     </Label>
-                    <Button onClick={() => greetingQuery.refetch()}>Submit</Button>
+                    <Button className="bg-black text-white hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/80" onClick={() => greetingQuery.refetch()}>
+                        Submit
+                    </Button>
                 </div>
             </div>
         </div>
